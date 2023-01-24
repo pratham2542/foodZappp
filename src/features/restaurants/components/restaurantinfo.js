@@ -5,18 +5,18 @@ import { SvgXml } from "react-native-svg";
 import star from "./star";
 import open from "./open";
 
-const RestaurantInfo = ({ restaurant = {} }) => {
+const RestaurantInfo = ({ restaurants = {} }) => {
   const {
     name = "Dominos",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2019/10/domino-s-pizza-1571307449.jpg",
     ],
-    address = "A-204 LNMIIT,jaipur",
+    vicinity = "A-204 LNMIIT,jaipur",
     isOpenNow = true,
     rating = 4,
     isClosedTemporarly = true,
-  } = restaurant;
+  } = restaurants;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
@@ -52,7 +52,7 @@ const RestaurantInfo = ({ restaurant = {} }) => {
             </View>
           </View>
 
-          <Text style={theme.address}>{address}</Text>
+          <Text style={theme.address}>{vicinity}</Text>
         </View>
       </Card>
     </View>
