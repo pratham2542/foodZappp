@@ -1,13 +1,12 @@
 import React, { createContext, useContext } from "react";
 import { FlatList, StyleSheet, Text, SafeAreaView, View } from "react-native";
-import { Searchbar } from "react-native-paper";
 import RestaurantInfo from "../components/restaurantinfo";
 import { RestaurantContext } from "../../../services/restaurant/restaurant.context";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
+import {Search} from  "../components/search.component";
 
 const RestaurantScreen = () => {
   const { restaurant, isLoading, error } = useContext(RestaurantContext);
-  // console.log(restaurantContext);
   return (
     <SafeAreaView style={theme.container}>
       {isLoading && (
@@ -16,17 +15,17 @@ const RestaurantScreen = () => {
         </View>
       )}
       <View style={theme.search}>
-        <Searchbar />
+        <Search/>
       </View>
       <View style={theme.List}>
         <FlatList
           data={restaurant}
-          renderItem={({ item }) => {
-            console.log(item);
-            return <RestaurantInfo restaurants={item} />;
+         
+          keyExtractor={(item,index) => {
+            return item.name;
           }}
-          keyExtractor={(item) => {
-            item.name;
+          renderItem={({ item }) => {
+            return <RestaurantInfo restaurants={item} />;
           }}
           contentContainerStyle={{ padding: 20 }}
         />
