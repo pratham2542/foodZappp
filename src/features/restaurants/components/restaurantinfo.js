@@ -16,6 +16,7 @@ const RestaurantInfo = ({ restaurants = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarly = true,
+    placeId,
   } = restaurants;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -28,15 +29,12 @@ const RestaurantInfo = ({ restaurants = {} }) => {
           source={{ uri: photos[0] }}
           style={theme.cover}
         />
-        {/* <Image key={name}
-          source={{ uri: photos[0] }}
-          style={theme.cover}/> */}
         <View style={theme.info}>
           <Text style={theme.title}>{name}</Text>
           <View style={theme.rating}>
             <View style={theme.stars}>
-              {ratingArray.map(() => (
-                <SvgXml xml={star} width={20} height={20} />
+              {ratingArray.map((_,i) => (
+                <SvgXml key={`star-${placeId}-${i}`}  xml={star} width={20} height={20} />
               ))}
             </View>
             <View style={theme.stars}>
